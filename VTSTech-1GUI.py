@@ -1,5 +1,5 @@
 # Program: VTSTech-1GUI.py
-# Version: 0.0.1 Revision 01
+# Version: 0.0.1 Revision 02
 # Operating System: Kali Linux
 # Description: Python script to run dnsrecon, nmap, sslscan, wpscan, urlscan. Output saved per tool/target.
 # Author: Written by Veritas//VTSTech (veritas@vts-tech.org)
@@ -13,7 +13,7 @@
 import os
 import tkinter as tk
 from tkinter import messagebox
-v="0.0.1-r01"
+v="0.0.1-r02"
 def run_stage1():
     target = entry.get()
     n1="sudo nmap -Pn --reason -T4 --top-ports 100 -vv -sS -oX nmap1-{}.xml --stylesheet https://svn.nmap.org/nmap/docs/nmap.xsl {}".format(target, target)
@@ -61,7 +61,7 @@ def run_wgetscan():
     messagebox.showinfo("Info", "wget completed!")	
 def run_urlscan():
     target = entry.get()
-    urlcmd="sudo urlscan -c -n wget-{}.txt".format(target)
+    urlcmd="sudo urlscan -c -n wget-{}.txt | tee urlscan-{}.txt".format(target, target)
     os.system(urlcmd)
     messagebox.showinfo("Info", "urlscan completed!")	    
 
