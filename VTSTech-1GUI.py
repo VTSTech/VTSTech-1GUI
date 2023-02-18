@@ -15,6 +15,7 @@ import random
 import tkinter as tk
 from tkinter import messagebox
 from tkinter import *
+import webbrowser
 
 class ApplicationForm(tk.Frame):
     def __init__(self, master=None):
@@ -23,7 +24,7 @@ class ApplicationForm(tk.Frame):
         # Create label and grid for hyperlink
         self.link_label = tk.Label(self.master, text="www.VTS-Tech.org")
         self.link_label.grid(row=8, column=0, columnspan=2, pady=10)
-        self.link_label.bind("<Button-1>", self.open_link)
+        self.link_label.bind("<Button-1>", lambda event: webbrowser.open("https://www.VTS-Tech.org"))
         self.link_label.config(foreground="blue", cursor="hand2")
     
     def open_link(self, event):
@@ -194,6 +195,5 @@ stage4_button.grid(row=6, column=1, pady=4, padx=2, sticky=tk.W)
 
 stage5_button = tk.Button(root, text="nmap stage 5", command=run_stage5)
 stage5_button.grid(row=7, column=1, pady=4, padx=2, sticky=tk.W)
-
 app = ApplicationForm(master=root)
 root.mainloop()
